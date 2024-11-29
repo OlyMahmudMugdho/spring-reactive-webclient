@@ -4,6 +4,7 @@ import com.mahmud.spring_reactive_webclient.model.Todo;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 @Service
 public class TodoService {
@@ -18,5 +19,12 @@ public class TodoService {
                 .uri("/todos")
                 .retrieve()
                 .bodyToFlux(Todo.class);
+    }
+
+    public Mono<Todo> findTaskById(int id){
+        return webClient.get()
+                .uri("/todos/{id}", id)
+                .retrieve()
+                .bodyToMono(Todo.class);
     }
 }
