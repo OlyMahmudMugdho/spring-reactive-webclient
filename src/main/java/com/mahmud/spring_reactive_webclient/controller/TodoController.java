@@ -35,4 +35,9 @@ public class TodoController {
     public Mono<Todo> updateTodo(@PathVariable int id, @RequestBody Todo todo) {
         return todoService.updateTask(id, todo);
     }
+
+    @DeleteMapping("/{id}")
+    public Mono<Void> deleteTodo(@PathVariable int id){
+        return todoService.deleteTask(id);
+    }
 }
