@@ -43,4 +43,11 @@ public class TodoService {
                 .retrieve()
                 .bodyToMono(Todo.class);
     }
+
+    public Mono<Void> deleteTask(int id) {
+        return webClient.delete()
+                .uri("/todos/{id}", id)
+                .retrieve()
+                .bodyToMono(Void.class);
+    }
 }
