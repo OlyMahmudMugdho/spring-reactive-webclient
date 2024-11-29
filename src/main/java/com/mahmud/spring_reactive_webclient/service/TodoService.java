@@ -27,4 +27,12 @@ public class TodoService {
                 .retrieve()
                 .bodyToMono(Todo.class);
     }
+
+    public Mono<Todo> addTask(Todo todo) {
+        return webClient.post()
+                .uri("/todos")
+                .bodyValue(todo)
+                .retrieve()
+                .bodyToMono(Todo.class);
+    }
 }
