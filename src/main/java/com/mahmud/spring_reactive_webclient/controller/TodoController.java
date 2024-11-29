@@ -27,7 +27,12 @@ public class TodoController {
     }
 
     @PostMapping
-    public Mono<Todo> createTask(@RequestBody Todo todo){
+    public Mono<Todo> createTodo(@RequestBody Todo todo){
         return todoService.addTask(todo);
+    }
+
+    @PutMapping("/{id}")
+    public Mono<Todo> updateTodo(@PathVariable int id, @RequestBody Todo todo) {
+        return todoService.updateTask(id, todo);
     }
 }
